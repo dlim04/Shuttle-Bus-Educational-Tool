@@ -46,4 +46,4 @@ class CompiledInstructions:
 
 if __name__ == '__main__':
     print('Please save your instructions as "instructions.txt" and run RunInstructions.py')
-    print('Press any enter to close window . . . ')
+    input('Press any enter to close window . . . ')
