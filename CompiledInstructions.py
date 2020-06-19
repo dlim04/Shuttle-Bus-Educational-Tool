@@ -42,3 +42,8 @@ class CompiledInstructions:
         :return: The compiled instructions as a 2D array
         """
         return self.__instructions
+
+
+if __name__ == '__main__':
+    print('Please save your instructions as "instructions.txt" and run RunInstructions.py')
+    print('Press any enter to close window . . . ')

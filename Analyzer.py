@@ -69,3 +69,8 @@ def line_number_match(array1, array2):
             return array1[0]
         else:
             return None
+
+
+if __name__ == '__main__':
+    print('Please save your instructions as "instructions.txt" and run RunInstructions.py')
+    print('Press any enter to close window . . . ')
