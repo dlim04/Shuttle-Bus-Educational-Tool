@@ -1,6 +1,6 @@
 class CompiledInstructions:
     """
-    Class to define the CompiledInstructions object to be run by the shuttlebus.
+    Class to define the CompiledInstructions object to be run by the shuttle bus.
     """
     def __init__(self, lexically_correct, compiled_correct, error_message, instructions):
         """
