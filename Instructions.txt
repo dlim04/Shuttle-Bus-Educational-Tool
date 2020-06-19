@@ -1,0 +1,9 @@
+function square() {
+    for(3) {
+        forward(1);
+        left(90);
+    }
+    forward(1);
+}
+
+square();
