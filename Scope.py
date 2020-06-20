@@ -10,12 +10,12 @@ class Scope:
         :param instructions: The program to be compiled
         """
         self.__line_number = line_number
-        self.__instructions = instructions
+        self._instructions = instructions
 
-        self.__instructions.pop(0)
-        self.__instructions.pop(len(self.__instructions) - 1)
+        self._instructions.pop(0)
+        self._instructions.pop(len(self._instructions) - 1)
 
-        self.__length = len(self.__instructions)
+        self.__length = len(self._instructions)
 
     def get_type(self):
         """
@@ -36,7 +36,7 @@ class Scope:
         Getter for the list of instructions the scope performs.
         :return: The list of instructions as a 2D list
         """
-        return self.__instructions
+        return self._instructions
 
     def get_length(self):
         """
