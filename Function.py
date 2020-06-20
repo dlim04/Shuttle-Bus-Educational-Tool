@@ -12,10 +12,9 @@ class Function(Scope):
         :param line_number: The line the function is defined at
         :param instructions: The program to be compiled
         """
+        self.__name = instructions[0][1]
         super().__init__(line_number, instructions)
         self._type = TokenType.SCOPE_FUNCTION
-
-        self.__name = self._instructions[0][1]
 
     def get_name(self):
         """
