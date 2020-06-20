@@ -9,6 +9,7 @@ class Scope:
         :param line_number: The line the function is defined at
         :param instructions: The program to be compiled
         """
+        self._type = None
         self.__line_number = line_number
         self._instructions = instructions
 
@@ -22,7 +23,7 @@ class Scope:
         Getter for the type of the scope.
         :return: The type of the scope as a TokenType
         """
-        return self.__type
+        return self._type
 
     def get_line_number(self):
         """

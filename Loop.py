@@ -13,4 +13,4 @@ class Loop(Scope):
         :param instructions: The program to be compiled
         """
         super().__init__(line_number, instructions)
-        self.__type = TokenType.SCOPE_LOOP
+        self._type = TokenType.SCOPE_LOOP
