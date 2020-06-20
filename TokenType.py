@@ -19,6 +19,9 @@ class TokenType(Enum):
     SPECIAL_LEFT = 10
     SPECIAL_RIGHT = 11
 
+    SCOPE_FUNCTION = 12
+    SCOPE_LOOP = 13
+
 
 if __name__ == '__main__':
     print('Please save your instructions as "instructions.txt" and run RunInstructions.py')
