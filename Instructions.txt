@@ -1,4 +1,4 @@
-function smallSquare() {
+function square() {
     for(3) {
         forward(1);
         left(90);
@@ -6,14 +6,4 @@ function smallSquare() {
     forward(1);
 }
 
-function bigSquare() {
-    for (3) {
-        forward(3);
-        left(90);
-    }
-    forward(3);
-}
-
-smallSquare();
-left(90);
-bigSquare();
+square();
