@@ -13,7 +13,7 @@ class Function(Scope):
         :param instructions: The program to be compiled
         """
         super().__init__(line_number, instructions)
-        self._type = TokenType.SCOPE_LOOP
+        self._type = TokenType.SCOPE_FUNCTION
 
         self.__name = self._instructions[0][1]
 
