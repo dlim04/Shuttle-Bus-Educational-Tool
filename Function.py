@@ -1,3 +1,4 @@
+from Scope import Scope
 from TokenType import TokenType
 
 
@@ -14,7 +15,7 @@ class Function(Scope):
         super().__init__(line_number, instructions)
         self.__type = TokenType.SCOPE_LOOP
 
-        self.__name = self.__instructions[0][1]
+        self.__name = self._instructions[0][1]
 
     def get_name(self):
         """

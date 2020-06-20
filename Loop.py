@@ -1,3 +1,4 @@
+from Scope import Scope
 from TokenType import TokenType
 
 
