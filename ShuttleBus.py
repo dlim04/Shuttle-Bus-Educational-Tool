@@ -33,14 +33,15 @@ class ShuttleBus:
         Private helper method to animate the shuttle bus moving.
         :param distance: The amount of tiles the shuttle bus moves as an integer
         """
+        double_grid_size = 64
         if self.__angle == 0:
-            self.__x += distance * 50
+            self.__x += distance * double_grid_size
         elif self.__angle == 90:
-            self.__y += distance * 50
+            self.__y += distance * double_grid_size
         elif self.__angle == 180:
-            self.__x -= distance * 50
+            self.__x -= distance * double_grid_size
         elif self.__angle == 270:
-            self.__y -= distance * 50
+            self.__y -= distance * double_grid_size
 
         # Animation goes here
 
