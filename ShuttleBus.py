@@ -79,7 +79,7 @@ class ShuttleBus:
         else:
             self.__angle = -self.__angle % 360
 
-        if self.__angle < 0:
+        while self.__angle < 0:
             self.__angle += 360
 
 
