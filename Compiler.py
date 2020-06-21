@@ -40,16 +40,15 @@ def compile_functions(instructions):
     # Replace function calls with declarations
     functions, loops = find_scopes(instructions)
 
+    # Remove Function declarations
+    line_count = 0
+    for function in functions:
+        function_declaration_start = function.get_line_number() - line_count - 1
+        for i in range(0, function.get_length() + 2):
+            line_count += 1
+            instructions.pop(function_declaration_start)
+
     while has_function_call(instructions):
-
-        # Remove Function declarations
-        line_count = 0
-        for function in functions:
-            function_declaration_start = function.get_line_number() - line_count - 1
-            for i in range(0, function.get_length() + 2):
-                line_count += 1
-                instructions.pop(function_declaration_start)
-
         # Replace function calls with functions
         for function in functions:
             program_line = 0
