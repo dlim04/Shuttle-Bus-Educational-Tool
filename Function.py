@@ -25,3 +25,8 @@ class Function(Scope):
         :return: The name of the function as a string
         """
         return self.__name
+
+
+if __name__ == '__main__':
+    print('Please save your instructions as "instructions.txt" and run RunInstructions.py')
+    input('Press any enter to close window . . . ')

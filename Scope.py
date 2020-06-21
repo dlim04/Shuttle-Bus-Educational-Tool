@@ -41,3 +41,8 @@ class Scope:
         :return: The length of the function as an integer
         """
         return self.__length
+
+
+if __name__ == '__main__':
+    print('Please save your instructions as "instructions.txt" and run RunInstructions.py')
+    input('Press any enter to close window . . . ')
