@@ -36,6 +36,21 @@ def tokenizer(program):
                 token_program.append(current_line)
                 current_line = []
 
+    # Loop to detect if a function or for loop declaration has a left brace to begin the next line instead of the same
+    # line
+    next_line_index = 0
+    left_brace_lines = []
+    for line, next_line in zip(token_program, token_program[1:]):
+        next_line_index += 1
+        if TokenType.KEYWORD_FUNCTION in line or TokenType.KEYWORD_FOR in line and TokenType.LEFT_BRACE not in line:
+            if len(next_line) == 1 and next_line[0] == TokenType.LEFT_BRACE:
+                line.append(TokenType.LEFT_BRACE)
+                left_brace_lines.append(next_line_index)
+
+    # Loop to delete any excess left braces
+    for i in range(0, len(left_brace_lines)):
+        token_program.pop(left_brace_lines[i] - i)
+
     return token_program
 
 
