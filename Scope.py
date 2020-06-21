@@ -12,11 +12,7 @@ class Scope:
         self._type = None
         self.__line_number = line_number
         self._instructions = instructions
-
-        self._instructions.pop(0)
-        self._instructions.pop(len(self._instructions) - 1)
-
-        self.__length = len(self._instructions)
+        self.__length = len(self._instructions) - 2  # -2 To remove opening and closing line
 
     def get_type(self):
         """
