@@ -1,9 +1,10 @@
-import ShuttleBus
+from ShuttleBus import ShuttleBus
 
 
 def animation(program):
+    shuttle_bus = ShuttleBus()
     for line in program:
-        print(ShuttleBus.move(line))
+        print(shuttle_bus.move(line))
 
 
 if __name__ == '__main__':
