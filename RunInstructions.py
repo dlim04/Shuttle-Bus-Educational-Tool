@@ -1,6 +1,6 @@
 from CompiledProgram import CompiledProgram
 from GUI import gui
-from LoadFiles import load_instructions
+from LoadFiles import load_instructions, load_settings
 from Settings import Settings
 from Tokenizer import *
 from Analyzer import *
@@ -8,7 +8,7 @@ from Compiler import *
 
 
 def main():
-    settings = Settings("")
+    settings = load_settings()
     program = load_instructions(settings.get_instructions_filename())
     tokenized_program = tokenizer(program)
     analysis = analyzer(tokenized_program)

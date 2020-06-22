@@ -9,6 +9,7 @@ class Settings:
         """
         self.__instructions_filename = "Instructions.txt"
         self.__logical_loop_limit = 1000
+        self.__settings_complete = True
 
     def get_instructions_filename(self):
         """
@@ -23,6 +24,13 @@ class Settings:
         :return: The logical loop limit as an integer
         """
         return self.__logical_loop_limit
+
+    def is_settings_complete(self):
+        """
+        Getter for whether all the settings values are satisfied.
+        :return: Whether all the settings values are as a boolean
+        """
+        return self.__settings_complete
 
 
 if __name__ == '__main__':
