@@ -32,5 +32,5 @@ class Loop(Scope):
 
 
 if __name__ == '__main__':
-    print('Please save your instructions as "instructions.txt" and run run.py')
-    input('Press any enter to close window . . . ')
+    print('Please save your instructions and run run.py')
+    input('Press enter to close window . . . ')
