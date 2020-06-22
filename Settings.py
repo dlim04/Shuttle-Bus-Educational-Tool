@@ -34,5 +34,5 @@ class Settings:
 
 
 if __name__ == '__main__':
-    print('Please save your instructions as "instructions.txt" and run RunInstructions.py')
+    print('Please save your instructions as "instructions.txt" and run run.py')
     input('Press any enter to close window . . . ')
