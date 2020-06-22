@@ -4,7 +4,11 @@ def load_instructions(filename):
     :param filename: The name of the text file as a string
     :return: The contents of the text file as a string
     """
-    file = open(filename)
+    try:
+        file = open(filename)
+    except FileNotFoundError:
+        file = open(filename, "x")
+
     program = file.read()
     file.close()
     return program
