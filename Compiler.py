@@ -3,9 +3,10 @@ from Loop import Loop
 from TokenType import *
 
 
-def compiler(instructions):
+def compiler(instructions, logical_loop_limit):
     """
     Function to compile the instructions to be read by the shuttle bus.
+    :param logical_loop_limit: The loop limit before the compiler returns an error as an integer
     :param instructions: The instructions in a tokenized form
     :return: The program to be run by the shuttle bus
     """
@@ -18,7 +19,7 @@ def compiler(instructions):
         while TokenType.SEMICOLON in line:
             line.remove(TokenType.SEMICOLON)
 
-    if compile_functions(instructions) == TokenType.ERROR_LOGICAL_ERROR:
+    if compile_functions(instructions, logical_loop_limit) == TokenType.ERROR_LOGICAL_ERROR:
         return TokenType.ERROR_LOGICAL_ERROR
 
     compile_loops(instructions)
@@ -34,9 +35,10 @@ def compiler(instructions):
     return instructions
 
 
-def compile_functions(instructions):
+def compile_functions(instructions, logical_loop_limit):
     """
     Helper procedure to to replace function calls with their declarations
+    :param logical_loop_limit: The loop limit before the compiler returns an error as an integer
     :param instructions: A pointer to the instructions being stored as a 2D array
     """
     # Replace function calls with declarations
@@ -58,7 +60,7 @@ def compile_functions(instructions):
             loop_count = 0
             for line in instructions:
                 loop_count += 1
-                if loop_count == 1000:
+                if loop_count == logical_loop_limit:
                     return TokenType.ERROR_LOGICAL_ERROR
                 program_line += 1
                 if line[0] == function.get_name():
