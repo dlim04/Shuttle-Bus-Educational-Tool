@@ -130,3 +130,6 @@ dmypy.json
 
 # PyCharm stuff
 .idea/
+
+# Shuttle bus project stuff
+Settings.txt
