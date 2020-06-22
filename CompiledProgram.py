@@ -1,10 +1,10 @@
-class CompiledCode:
+class CompiledProgram:
     """
-    Class to define the CompiledCode object to be run by the shuttle bus.
+    Class to define the CompiledProgram object to be run by the shuttle bus.
     """
     def __init__(self, lexically_correct, compiled_correct, error_message, code):
         """
-        Constructor for the CompiledCode object.
+        Constructor for the CompiledProgram object.
         :param lexically_correct: Whether the instructions written by the user are lexically correct as a boolean
         :param compiled_correct: Whether the instructions written by the user were compiled correctly as a boolean
         :param error_message: The error message from the lexical analysis (None if lexically correct) as a string

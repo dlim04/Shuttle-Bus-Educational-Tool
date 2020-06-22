@@ -1,4 +1,4 @@
-from CompiledCode import CompiledCode
+from CompiledProgram import CompiledProgram
 from GUI import gui
 from LoadInstructions import load_instructions
 from Tokenizer import *
@@ -11,12 +11,12 @@ def main():
     tokenized_program = tokenizer(program)
     analysis = analyzer(tokenized_program)
     if analysis is not None:
-        compiled_code = CompiledCode(False, False, analysis, None)
+        compiled_program = CompiledProgram(False, False, analysis, None)
     else:
         compiler_output = compiler(tokenized_program)
-        compiled_code = CompiledCode(True, True, None, compiler_output)
+        compiled_program = CompiledProgram(True, True, None, compiler_output)
 
-    gui(compiled_code)
+    gui(compiled_program)
 
 
 if __name__ == '__main__':
