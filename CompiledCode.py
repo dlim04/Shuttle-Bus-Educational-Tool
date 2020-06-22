@@ -1,19 +1,19 @@
-class CompiledInstructions:
+class CompiledCode:
     """
-    Class to define the CompiledInstructions object to be run by the shuttle bus.
+    Class to define the CompiledCode object to be run by the shuttle bus.
     """
-    def __init__(self, lexically_correct, compiled_correct, error_message, instructions):
+    def __init__(self, lexically_correct, compiled_correct, error_message, code):
         """
-        Constructor for the CompiledInstructions object.
+        Constructor for the CompiledCode object.
         :param lexically_correct: Whether the instructions written by the user are lexically correct as a boolean
         :param compiled_correct: Whether the instructions written by the user were compiled correctly as a boolean
         :param error_message: The error message from the lexical analysis (None if lexically correct) as a string
-        :param instructions: The compiled instructions as a 2D list
+        :param code: The compiled instructions as a 2D list
         """
         self.__lexically_correct = lexically_correct
         self.__compiled_correct = compiled_correct
         self.__error_message = error_message
-        self.__instructions = instructions
+        self.__code = code
 
     def is_lexically_correct(self):
         """
@@ -36,12 +36,12 @@ class CompiledInstructions:
         """
         return self.__error_message
 
-    def get_instructions(self):
+    def get_code(self):
         """
         Getter for the compiled instructions.
         :return: The compiled instructions as a 2D array
         """
-        return self.__instructions
+        return self.__code
 
 
 if __name__ == '__main__':
