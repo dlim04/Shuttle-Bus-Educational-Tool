@@ -14,7 +14,10 @@ def main():
         compiled_program = CompiledProgram(False, False, analysis, None)
     else:
         compiler_output = compiler(tokenized_program)
-        compiled_program = CompiledProgram(True, True, None, compiler_output)
+        if compiler_output == TokenType.ERROR_LOGICAL_ERROR:
+            compiled_program = CompiledProgram(True, False, "Logical error found: Infinite loop created", None)
+        else:
+            compiled_program = CompiledProgram(True, True, None, compiler_output)
 
     gui(compiled_program)
 

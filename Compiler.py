@@ -18,7 +18,9 @@ def compiler(instructions):
         while TokenType.SEMICOLON in line:
             line.remove(TokenType.SEMICOLON)
 
-    compile_functions(instructions)
+    if compile_functions(instructions) == TokenType.ERROR_LOGICAL_ERROR:
+        return TokenType.ERROR_LOGICAL_ERROR
+
     compile_loops(instructions)
 
     # Remove parenthesis
@@ -52,7 +54,12 @@ def compile_functions(instructions):
         # Replace function calls with functions
         for function in functions:
             program_line = 0
+
+            loop_count = 0
             for line in instructions:
+                loop_count += 1
+                if loop_count == 1000:
+                    return TokenType.ERROR_LOGICAL_ERROR
                 program_line += 1
                 if line[0] == function.get_name():
                     instructions.remove(line)
