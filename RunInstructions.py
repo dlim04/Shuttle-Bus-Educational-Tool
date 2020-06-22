@@ -1,6 +1,6 @@
 from CompiledProgram import CompiledProgram
 from GUI import gui
-from LoadInstructions import load_instructions
+from LoadFiles import load_instructions
 from Tokenizer import *
 from Analyzer import *
 from Compiler import *
