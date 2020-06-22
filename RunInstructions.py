@@ -1,3 +1,4 @@
+from CompiledCode import CompiledCode
 from GUI import gui
 from LoadInstructions import load_instructions
 from Tokenizer import *
@@ -9,15 +10,13 @@ def main():
     program = load_instructions("Instructions.txt")
     tokenized_program = tokenizer(program)
     analysis = analyzer(tokenized_program)
-    if analysis is None:
-        print("There were no issues with the program")
-        compiled_program = compiler(tokenized_program)
-        gui(compiled_program)
-        input('Press any enter to close window . . . ')
-
+    if analysis is not None:
+        compiled_code = CompiledCode(False, False, analysis, None)
     else:
-        print("There was an error with the syntax of the program")
-        print(analysis)
+        compiler_output = compiler(tokenized_program)
+        compiled_code = CompiledCode(True, True, None, compiler_output)
+
+    gui(compiled_code)
 
 
 if __name__ == '__main__':
