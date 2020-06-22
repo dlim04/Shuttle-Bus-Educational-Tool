@@ -14,6 +14,8 @@ def compiler(instructions, logical_loop_limit):
     while [] in instructions:
         instructions.remove([])
 
+    instructions_line_count = len(instructions)
+
     # Remove semicolons
     for line in instructions:
         while TokenType.SEMICOLON in line:
@@ -32,7 +34,7 @@ def compiler(instructions, logical_loop_limit):
         while TokenType.RIGHT_PAREN in line:
             line.remove(TokenType.RIGHT_PAREN)
 
-    return instructions
+    return instructions_line_count, instructions
 
 
 def compile_functions(instructions, logical_loop_limit):

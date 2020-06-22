@@ -13,13 +13,13 @@ def main():
     tokenized_program = tokenizer(program)
     analysis = analyzer(tokenized_program)
     if analysis is not None:
-        compiled_program = CompiledProgram(False, False, analysis, None)
+        compiled_program = CompiledProgram(False, False, analysis, 0, None)
     else:
-        compiler_output = compiler(tokenized_program, settings.get_logical_loop_limit())
+        instructions_line_count, compiler_output = compiler(tokenized_program, settings.get_logical_loop_limit())
         if compiler_output == TokenType.ERROR_LOGICAL_ERROR:
-            compiled_program = CompiledProgram(True, False, "Logical error found: Infinite loop created", None)
+            compiled_program = CompiledProgram(True, False, "Logical error found: Infinite loop created", 0, None)
         else:
-            compiled_program = CompiledProgram(True, True, None, compiler_output)
+            compiled_program = CompiledProgram(True, True, None, instructions_line_count, compiler_output)
 
     gui(compiled_program)
 
