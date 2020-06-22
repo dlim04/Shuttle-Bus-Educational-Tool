@@ -1,4 +1,5 @@
 from TokenType import TokenType
+from pygame import *
 
 
 class ShuttleBus:
@@ -11,7 +12,7 @@ class ShuttleBus:
         Constructor for the ShuttleBus class
         """
         self.__x = 0
-        self.__y = 500
+        self.__y = 0
         self.__angle = 180
 
     def move(self, instruction):
