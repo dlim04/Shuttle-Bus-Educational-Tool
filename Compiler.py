@@ -22,7 +22,7 @@ def compiler(instructions, logical_loop_limit):
             line.remove(TokenType.SEMICOLON)
 
     if compile_functions(instructions, logical_loop_limit) == TokenType.ERROR_LOGICAL_ERROR:
-        return TokenType.ERROR_LOGICAL_ERROR
+        return instructions_line_count, TokenType.ERROR_LOGICAL_ERROR
 
     compile_loops(instructions)
 
