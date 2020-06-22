@@ -43,6 +43,8 @@ def analyzer(program):
     if line_missing is not None:
         return "Parameter should only be on one line (parenthesis may be missing) in line " + str(line_missing)
 
+    return None
+
 
 def line_number_match(array1, array2):
     """
