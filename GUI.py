@@ -1,7 +1,7 @@
 from ShuttleBus import ShuttleBus
 
 
-def animation(program):
+def gui(program):
     shuttle_bus = ShuttleBus()
     for line in program:
         print(shuttle_bus.move(line))
