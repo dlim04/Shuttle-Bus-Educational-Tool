@@ -1,5 +1,4 @@
 from TokenType import TokenType
-from pygame import *
 
 
 class ShuttleBus:
@@ -7,6 +6,7 @@ class ShuttleBus:
     Class to define the ShuttleBus object for use when executing the program defined by the user and running the
     animation.
     """
+
     def __init__(self):
         """
         Constructor for the ShuttleBus class
@@ -83,6 +83,27 @@ class ShuttleBus:
 
         while self.__angle < 0:
             self.__angle += 360
+
+    def get_x(self):
+        """
+        Getter for the x ordinate of the shuttle bus.
+        :return: The x ordinate of the function as a string
+        """
+        return self.__x
+
+    def get_y(self):
+        """
+        Getter for the y ordinate of the shuttle bus.
+        :return: The y ordinate of the function as a string
+        """
+        return self.__y
+
+    def get_angle(self):
+        """
+        Getter for the angle of the shuttle bus.
+        :return: The angle of the function as a string
+        """
+        return self.__angle
 
 
 if __name__ == '__main__':
