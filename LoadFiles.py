@@ -1,3 +1,6 @@
+import io
+
+
 def load_instructions(filename):
     """
     Function to read a string in from a text file and return that string.
@@ -9,8 +12,12 @@ def load_instructions(filename):
     except FileNotFoundError:
         file = open(filename, "x")
 
-    program = file.read()
-    file.close()
+    try:
+        program = file.read()
+        file.close()
+    except io.UnsupportedOperation:
+        program = ""
+
     return program
 
 
