@@ -1,10 +1,10 @@
+from Analyzer import analyzer
 from CompiledProgram import CompiledProgram
+from Compiler import compiler
 from GUI import gui
 from LoadFiles import load_instructions, load_settings
-from Settings import Settings
-from Tokenizer import *
-from Analyzer import *
-from Compiler import *
+from TokenType import TokenType
+from Tokenizer import tokenizer
 
 
 def main():
