@@ -5,7 +5,7 @@ from Analyzer import *
 from Compiler import *
 
 
-if __name__ == '__main__':
+def main():
     program = load_instructions("Instructions.txt")
     tokenized_program = tokenizer(program)
     analysis = analyzer(tokenized_program)
@@ -18,3 +18,7 @@ if __name__ == '__main__':
     else:
         print("There was an error with the syntax of the program")
         print(analysis)
+
+
+if __name__ == '__main__':
+    main()
