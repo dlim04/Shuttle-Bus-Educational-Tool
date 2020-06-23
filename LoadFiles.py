@@ -32,11 +32,10 @@ def load_settings():
     settings_file = "Settings.txt"
     try:
         file = open(settings_file)
+        settings_string = file.read()
     except FileNotFoundError:
-        reset_settings("Instructions.txt", 1000)
-        file = open(settings_file)
+        settings_string = ""
 
-    settings_string = file.read()
     settings = Settings(settings_string)
 
     return settings
