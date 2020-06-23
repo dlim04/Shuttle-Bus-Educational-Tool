@@ -1,6 +1,6 @@
 import io
 
-from Settings import Settings
+from Settings import Settings, reset_settings
 
 
 def load_instructions(filename):
@@ -39,22 +39,7 @@ def load_settings():
     settings_string = file.read()
     settings = Settings(settings_string)
 
-    if not settings.is_settings_complete():
-        reset_settings()
-        settings_string = file.read()
-        settings = Settings(settings_string)
-
     return settings
-
-
-def reset_settings():
-    """
-    Procedure to reset the Settings.txt file to it's standard settings.
-    """
-    file = open("Settings.txt", "w")
-    file.write("instructions_filename = Instructions.txt\n"
-               "logical_loop_limit = 1000")
-    file.close()
 
 
 if __name__ == '__main__':
