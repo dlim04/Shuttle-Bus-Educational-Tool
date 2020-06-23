@@ -46,7 +46,7 @@ class Settings:
         else:
             self.__instructions_filename = "Instructions.txt"
             self.__logical_loop_limit = 1000
-            reset_settings(self.__instructions_filename, self.__logical_loop_limit)
+            reset_settings_file(self.__instructions_filename, self.__logical_loop_limit)
             self.__settings_complete = True
 
     def get_instructions_filename(self):
@@ -71,7 +71,7 @@ class Settings:
         return self.__settings_complete
 
 
-def reset_settings(instructions_filename, logical_loop_limit):
+def reset_settings_file(instructions_filename, logical_loop_limit):
     """
     Procedure to reset the Settings.txt file to it's standard settings.
     :param instructions_filename: The filename the instructions for the compiler is stored at as a string
