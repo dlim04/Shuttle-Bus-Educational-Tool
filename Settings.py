@@ -2,14 +2,16 @@ class Settings:
     """
     Class to define the Settings object for use when configuring the compiler.
     """
-    def __init__(self, settings_string):
+    def __init__(self, instructions_filename, logical_loop_limit, settings_complete):
         """
         Constructor for the Settings object.
-        :param settings_string: A string containing the desired settings
+        :param instructions_filename: The name of the file the instructions for the compiler is stored at as a string
+        :param logical_loop_limit: The logical loop limit as an integer
+        :param settings_complete: Whether all the setting values are satisfied as a boolean value
         """
-        self.__instructions_filename = "Instructions.txt"
-        self.__logical_loop_limit = 1000
-        self.__settings_complete = True
+        self.__instructions_filename = instructions_filename
+        self.__logical_loop_limit = logical_loop_limit
+        self.__settings_complete = settings_complete
 
     def get_instructions_filename(self):
         """
