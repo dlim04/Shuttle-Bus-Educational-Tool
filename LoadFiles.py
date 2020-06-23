@@ -1,6 +1,6 @@
 import io
 
-from Settings import Settings, reset_settings
+from Settings import Settings
 
 
 def load_instructions(filename):
