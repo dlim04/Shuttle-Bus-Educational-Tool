@@ -16,15 +16,26 @@ class Settings:
             for j in range(0, len(settings_list[i])):
                 settings_list[i][j] = settings_list[i][j].replace(' ', '')
 
-        instructions_filename = settings_list[0][1]
-        instructions_filename_is_valid = instructions_filename[-4:] == ".txt"
+        nested_list_length_correct = True
+        for setting in settings_list:
+            if len(setting) != 2:
+                nested_list_length_correct = False
+                break
 
-        logical_loop_limit = settings_list[1][1]
+        if len(settings_list) == 2 and nested_list_length_correct:
+            instructions_filename = settings_list[0][1]
+            instructions_filename_is_valid = instructions_filename[-4:] == ".txt"
 
-        try:
-            logical_loop_limit = int(logical_loop_limit)
-            logical_loop_limit_is_valid = logical_loop_limit > 0
-        except ValueError:
+            logical_loop_limit = settings_list[1][1]
+
+            try:
+                logical_loop_limit = int(logical_loop_limit)
+                logical_loop_limit_is_valid = logical_loop_limit > 0
+            except ValueError:
+                logical_loop_limit_is_valid = False
+
+        else:
+            instructions_filename_is_valid = False
             logical_loop_limit_is_valid = False
 
         if instructions_filename_is_valid and logical_loop_limit_is_valid:
