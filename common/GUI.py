@@ -14,6 +14,7 @@ def gui(program):
         for line in code:
             print(shuttle_bus.move(line))
 
+    animation(program)
     input('Press enter to close window . . . ')
 
 
