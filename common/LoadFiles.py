@@ -67,5 +67,4 @@ def load_map():
 
 if __name__ == '__main__':
     print('Please save your instructions and run run.py')
-    load_map()
     input('Press enter to close window . . . ')
