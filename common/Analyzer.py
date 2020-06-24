@@ -1,4 +1,4 @@
-from TokenType import *
+from common.TokenType import *
 
 
 def analyzer(program):

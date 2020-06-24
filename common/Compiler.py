@@ -1,6 +1,6 @@
-from Function import Function
-from Loop import Loop
-from TokenType import *
+from common.Function import Function
+from common.Loop import Loop
+from common.TokenType import *
 
 
 def compiler(instructions, logical_loop_limit):

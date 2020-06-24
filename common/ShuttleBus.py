@@ -1,4 +1,4 @@
-from TokenType import TokenType
+from common.TokenType import TokenType
 
 
 class ShuttleBus:

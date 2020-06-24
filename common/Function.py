@@ -1,5 +1,5 @@
-from Scope import Scope
-from TokenType import TokenType
+from common.Scope import Scope
+from common.TokenType import TokenType
 
 
 class Function(Scope):

@@ -1,6 +1,6 @@
-from ShuttleBus import ShuttleBus
-from Tile import *
-from TileType import TileType
+from common.ShuttleBus import ShuttleBus
+from common.Tile import *
+from common.TileType import TileType
 from pygame import *
 
 

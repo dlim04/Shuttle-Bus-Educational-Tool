@@ -1,4 +1,4 @@
-from TileType import TileType
+from common.TileType import TileType
 from pygame import image
 
 

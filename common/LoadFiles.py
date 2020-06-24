@@ -1,6 +1,6 @@
 import io
 
-from Settings import Settings
+from common.Settings import Settings
 
 
 def load_instructions(filename):
@@ -29,7 +29,7 @@ def load_settings():
     Settings.txt.
     :return: The Settings object that stores the settings for the compiler
     """
-    settings_file = "Settings.txt"
+    settings_file = "./Settings.txt"
     try:
         file = open(settings_file)
         settings_string = file.read()

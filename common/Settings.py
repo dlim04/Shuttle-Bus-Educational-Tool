@@ -44,7 +44,7 @@ class Settings:
             self.__settings_complete = True
 
         else:
-            self.__instructions_filename = "Instructions.txt"
+            self.__instructions_filename = "./Instructions.txt"
             self.__logical_loop_limit = 1000
             reset_settings_file(self.__instructions_filename, self.__logical_loop_limit)
             self.__settings_complete = True
@@ -77,7 +77,7 @@ def reset_settings_file(instructions_filename, logical_loop_limit):
     :param instructions_filename: The filename the instructions for the compiler is stored at as a string
     :param logical_loop_limit: The logical loop limit as an integer
     """
-    file = open("Settings.txt", "w")
+    file = open("./Settings.txt", "w")
     file.write("instructions_filename = {}\nlogical_loop_limit = {}".format(instructions_filename, logical_loop_limit))
     file.close()
 
