@@ -44,7 +44,7 @@ class Settings:
             self.__settings_complete = True
 
         else:
-            self.__instructions_filename = "./Instructions.txt"
+            self.__instructions_filename = "Instructions.txt"
             self.__logical_loop_limit = 1000
             reset_settings_file(self.__instructions_filename, self.__logical_loop_limit)
             self.__settings_complete = True

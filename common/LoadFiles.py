@@ -9,10 +9,11 @@ def load_instructions(filename):
     :param filename: The name of the text file as a string
     :return: The contents of the text file as a string
     """
+    filepath = "./" + filename
     try:
-        file = open(filename)
+        file = open(filepath)
     except FileNotFoundError:
-        file = open(filename, "x")
+        file = open(filepath, "x")
 
     try:
         program = file.read()
