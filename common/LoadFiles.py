@@ -51,7 +51,7 @@ def load_map():
     Procedure to read a map from a file.
     :return: A nested list of Tile objects
     """
-    map_file = "./Map.csv"
+    map_file = "..\\Map.csv"
     map_list = []
     reader = csv.reader(open(map_file), delimiter=";")
     for row in reader:
@@ -67,4 +67,5 @@ def load_map():
 
 if __name__ == '__main__':
     print('Please save your instructions and run run.py')
+    load_map()
     input('Press enter to close window . . . ')
