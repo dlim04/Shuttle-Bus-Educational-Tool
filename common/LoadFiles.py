@@ -51,7 +51,7 @@ def load_map():
     Procedure to read a map from a file.
     :return: A nested list of Tile objects
     """
-    map_file = "..\\Map.csv"
+    map_file = ".\\Map.csv"
     map_list = []
     reader = csv.reader(open(map_file), delimiter=";")
     for row in reader:
@@ -60,7 +60,7 @@ def load_map():
             tile_values = re.split(',', tile)
             for i in range(0, len(tile_values)):
                 tile_values[i] = tile_values[i].replace(' ', '')
-                map_line.append(Tile(string_to_tile_type(tile_values[0]), int(tile_values[1])))
+            map_line.append(Tile(string_to_tile_type(tile_values[0]), int(tile_values[1])))
         map_list.append(map_line)
     return map_list
 
