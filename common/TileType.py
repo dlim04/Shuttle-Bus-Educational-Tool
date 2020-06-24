@@ -20,6 +20,8 @@ class TileType(Enum):
     CANDY_SHOP = 11
     FOOTBALL_CLUB = 12
 
+    BUS_STOP = 13
+
 
 def string_to_tile_type(string):
     """
@@ -39,7 +41,8 @@ def string_to_tile_type(string):
         "CHURCH": TileType.CHURCH,
         "SWEET_SHOP": TileType.SWEET_SHOP,
         "CANDY_SHOP": TileType.CANDY_SHOP,
-        "FOOTBALL_CLUB": TileType.FOOTBALL_CLUB
+        "FOOTBALL_CLUB": TileType.FOOTBALL_CLUB,
+        "BUS_STOP": TileType.BUS_STOP
     }
     try:
         return tiles[string]

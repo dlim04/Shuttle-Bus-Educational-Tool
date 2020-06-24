@@ -54,6 +54,8 @@ def determine_image(tile_type):
         return image.load(".\\Images\\Terrain\\candy_shop.png")
     elif tile_type == TileType.FOOTBALL_CLUB:
         return image.load(".\\\Images\\Terrain\\football_club.png")
+    elif tile_type == TileType.BUS_STOP:
+        return image.load(".\\\Images\\Terrain\\bus_stop.png")
 
 
 if __name__ == '__main__':
