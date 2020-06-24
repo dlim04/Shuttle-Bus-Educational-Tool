@@ -13,7 +13,7 @@ def load_instructions(filename):
     :param filename: The name of the text file as a string
     :return: The contents of the text file as a string
     """
-    filepath = "./" + filename
+    filepath = ".\\" + filename
     try:
         file = open(filepath)
     except FileNotFoundError:
@@ -34,7 +34,7 @@ def load_settings():
     Settings.txt.
     :return: The Settings object that stores the settings for the compiler
     """
-    settings_file = "./Settings.txt"
+    settings_file = ".\\Settings.txt"
     try:
         file = open(settings_file)
         settings_string = file.read()
