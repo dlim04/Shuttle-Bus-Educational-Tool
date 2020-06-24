@@ -23,7 +23,6 @@ def animation(program):
     display.set_caption("Shuttle Bus Educational Tool")
     window_size = (480, 480)
     screen = display.set_mode(window_size, 0, 32)
-
     tile_map = load_map()
 
     while True:
@@ -41,5 +40,4 @@ def animation(program):
 
 if __name__ == '__main__':
     print('Please save your instructions and run run.py')
-    animation("Test")
     input('Press enter to close window . . . ')
