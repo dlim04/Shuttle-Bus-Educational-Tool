@@ -1,5 +1,4 @@
 from common.ShuttleBus import ShuttleBus
-from common.Tile import *
 from common.LoadFiles import load_map
 from pygame import *
 
@@ -11,32 +10,37 @@ def gui(program):
     else:
         code = program.get_code()
         shuttle_bus = ShuttleBus()
+        animation(shuttle_bus)
         for line in code:
             print(shuttle_bus.move(line))
+            animation(shuttle_bus)
 
-    animation(program)
     input('Press enter to close window . . . ')
 
 
-def animation(program):
+def animation(shuttle_bus):
     clock = time.Clock()
     init()
     display.set_caption("Shuttle Bus Educational Tool")
     window_size = (480, 480)
     screen = display.set_mode(window_size, 0, 32)
+    tile_size = 32
     tile_map = load_map()
+    bus_img = image.load(".\\Images\\Bus\\bus.png").convert()
+    bus_img.set_colorkey((255, 255, 255))
 
-    while True:
-        y = 0
-        for line in tile_map:
-            x = 0
-            for tile in line:
-                screen.blit(transform.rotate(tile.get_image(), tile.get_angle()), (x * 32, y * 32))
-                x += 1
-            y += 1
+    y = 0
+    for line in tile_map:
+        x = 0
+        for tile in line:
+            screen.blit(transform.rotate(tile.get_image(), tile.get_angle()), (x * tile_size, y * tile_size))
+            x += 1
+        y += 1
 
-        display.update()
-        clock.tick(30)
+    screen.blit(transform.rotate(bus_img, shuttle_bus.get_angle()), (shuttle_bus.get_x() * tile_size, shuttle_bus.get_y() * tile_size))
+
+    display.update()
+    clock.tick(2)
 
 
 if __name__ == '__main__':

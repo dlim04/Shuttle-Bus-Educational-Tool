@@ -1,19 +1,19 @@
 function smallSquare() {
     for(3) {
-        forward(1);
-        left(90);
+        forward(2);
+        right(90);
     }
-    forward(1);
+    forward(2);
 }
 
 function bigSquare() {
     for (3) {
-        forward(3);
+        forward(4);
         left(90);
     }
-    forward(3);
+    forward(4);
 }
 
 smallSquare();
-left(90);
+right(90);
 bigSquare();

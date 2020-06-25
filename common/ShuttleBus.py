@@ -11,8 +11,8 @@ class ShuttleBus:
         """
         Constructor for the ShuttleBus class
         """
-        self.__x = 0
-        self.__y = 0
+        self.__x = 8
+        self.__y = 8
         self.__angle = 180
 
     def move(self, instruction):
@@ -34,15 +34,14 @@ class ShuttleBus:
         Private helper method to animate the shuttle bus moving.
         :param distance: The amount of tiles the shuttle bus moves as an integer
         """
-        double_grid_size = 64
         if self.__angle == 0:
-            self.__x += distance * double_grid_size
+            self.__y -= distance
         elif self.__angle == 90:
-            self.__y += distance * double_grid_size
+            self.__x -= distance
         elif self.__angle == 180:
-            self.__x -= distance * double_grid_size
+            self.__y += distance
         elif self.__angle == 270:
-            self.__y -= distance * double_grid_size
+            self.__x += distance
 
         # Animation goes here
 
@@ -53,7 +52,7 @@ class ShuttleBus:
         Private helper method to animate the shuttle but turning left.
         :param angle: The angle the bus turns left as an integer
         """
-        self.__set_angle(-angle)
+        self.__set_angle(angle)
 
         # Animation goes here
 
@@ -64,7 +63,7 @@ class ShuttleBus:
         Private helper method to animate the shuttle but turning right.
         :param angle: The angle the bus turns right as an integer
         """
-        self.__set_angle(angle)
+        self.__set_angle(-angle)
 
         # Animation goes here
 
@@ -78,8 +77,6 @@ class ShuttleBus:
         self.__angle += angle
         if self.__angle > 0:
             self.__angle = self.__angle % 360
-        else:
-            self.__angle = -self.__angle % 360
 
         while self.__angle < 0:
             self.__angle += 360
