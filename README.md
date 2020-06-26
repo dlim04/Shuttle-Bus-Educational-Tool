@@ -10,7 +10,7 @@ The "Shuttle Bus Educational Tool" runs using Python and is heavily dependent on
 
 - To install python please visit https://www.python.org/, locate the latest version for your operating system and follow the installation instructions. If running on Windows make sure you add the python installation to PATH (tick box in the first screen of the installer). Also make sure pip is installed for all instillations. Adding the installation to PATH and making sure pip is installed will help make it easy to install pygame later.
 
-- To install pygame open terminal (for windows CMD and make sure you run it as an administrator) and run `python3 pip install pygame`.
+- To install pygame open terminal (for windows CMD and make sure you run it as an administrator) and run `py pip install pygame`.
   >https://www.pygame.org/
 
 ## Program Syntax
