@@ -48,9 +48,9 @@ Functions are defined using the `function` keyword. This must be followed by the
 >     forward(2);
 > }
 >
-> smallSquare();
+> square();
 > right(90);
-> smallSquare();
+> square();
 > ```
 > This program would make the bus go in a sqaure around the block twice.
 
