@@ -79,7 +79,7 @@ If you have a feature request please also create an issue using the link above.
 
 ## Credits
 
-David Lim - Project Creator
+David Lim - Project Creator  
 Michael Allen - Programmer and Artist
 
 ## License
