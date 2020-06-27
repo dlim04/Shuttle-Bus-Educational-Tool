@@ -38,7 +38,7 @@ class Tile:
 
 
 def determine_road(tile_type):
-    if tile_type == TileType.STRAIGHT_ROAD or tile_type == TileType.CORNER_ROAD or tile_type == TileType.T_JUNCTION or tile_type == TileType.CROSSROADS:
+    if tile_type == TileType.STRAIGHT_ROAD or tile_type == TileType.CORNER_ROAD or tile_type == TileType.T_JUNCTION or tile_type == TileType.CROSSROADS or tile_type == TileType.DEAD_END:
         return True
     else:
         return False
@@ -53,6 +53,8 @@ def determine_image(tile_type):
         return image.load(".\\Images\\Roads\\t_junction.png")
     elif tile_type == TileType.CROSSROADS:
         return image.load(".\\Images\\Roads\\crossroads.png")
+    elif tile_type == TileType.DEAD_END:
+        return image.load(".\\Images\\Roads\\dead_end.png")
     elif tile_type == TileType.DIRT:
         return image.load(".\\Images\\Terrain\\dirt.png")
     elif tile_type == TileType.GRASS:
@@ -69,6 +71,14 @@ def determine_image(tile_type):
         return image.load(".\\Images\\Terrain\\candy_shop.png")
     elif tile_type == TileType.FOOTBALL_CLUB:
         return image.load(".\\Images\\Terrain\\football_club.png")
+    elif tile_type == TileType.HELIPAD:
+        return image.load(".\\Images\\Terrain\\helipad.png")
+    elif tile_type == TileType.JAIL:
+        return image.load(".\\Images\\Terrain\\jail.png")
+    elif tile_type == TileType.JEWELLERY_SHOP:
+        return image.load(".\\Images\\Terrain\\jewellery_shop.png")
+    elif tile_type == TileType.GAME_SHOP:
+        return image.load(".\\Images\\Terrain\\game_shop.png")
     elif tile_type == TileType.BUS_STOP:
         return image.load(".\\Images\\Terrain\\bus_stop.png")
 

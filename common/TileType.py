@@ -9,18 +9,23 @@ class TileType(Enum):
     CORNER_ROAD = 2
     T_JUNCTION = 3
     CROSSROADS = 4
+    DEAD_END = 5
 
-    DIRT = 5
-    GRASS = 6
+    DIRT = 6
+    GRASS = 7
 
-    COFFEE_SHOP = 7
-    LIBRARY = 8
-    CHURCH = 9
-    SWEET_SHOP = 10
-    CANDY_SHOP = 11
-    FOOTBALL_CLUB = 12
+    COFFEE_SHOP = 8
+    LIBRARY = 9
+    CHURCH = 10
+    SWEET_SHOP = 11
+    CANDY_SHOP = 12
+    FOOTBALL_CLUB = 13
+    HELIPAD = 14
+    JAIL = 15
+    JEWELLERY_SHOP = 16
+    GAME_SHOP = 17
 
-    BUS_STOP = 13
+    BUS_STOP = 18
 
 
 def string_to_tile_type(string):
@@ -34,6 +39,7 @@ def string_to_tile_type(string):
         "CORNER_ROAD": TileType.CORNER_ROAD,
         "T_JUNCTION": TileType.T_JUNCTION,
         "CROSSROADS": TileType.CROSSROADS,
+        "DEAD_END": TileType.DEAD_END,
         "DIRT": TileType.DIRT,
         "GRASS": TileType.GRASS,
         "COFFEE_SHOP": TileType.COFFEE_SHOP,
@@ -42,6 +48,10 @@ def string_to_tile_type(string):
         "SWEET_SHOP": TileType.SWEET_SHOP,
         "CANDY_SHOP": TileType.CANDY_SHOP,
         "FOOTBALL_CLUB": TileType.FOOTBALL_CLUB,
+        "HELIPAD": TileType.HELIPAD,
+        "JAIL": TileType.JAIL,
+        "JEWELLERY_SHOP": TileType.JEWELLERY_SHOP,
+        "GAME_SHOP": TileType.GAME_SHOP,
         "BUS_STOP": TileType.BUS_STOP
     }
     try:
