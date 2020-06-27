@@ -4,6 +4,10 @@ from pygame import *
 
 
 def gui(program):
+    """
+    Function to handle the graphical display of the shuttle bus program
+    :param program: The compiled program generated from what the user has written
+    """
     if not program.is_lexically_correct() or not program.is_compiled_correct():
         print("There was an error found in the program")
         print(program.get_error_message())
@@ -14,6 +18,11 @@ def gui(program):
 
 
 def animation(program):
+    """
+    Function to animate the shuttle bus moving around the map grid
+    :param program: The compiled program generated from what the user has written
+    :return:
+    """
     code = program.get_code()
     clock = time.Clock()
     init()
@@ -65,6 +74,13 @@ def animation(program):
 
 
 def draw_map(tile_map, screen, tile_size, shuttle_bus):
+    """
+    Function to draw the map on to the screen
+    :param tile_map: The list of all tiles to be drawn on to the screen
+    :param screen: The screen object which will e displayed
+    :param tile_size: The height and width in pixels of the tiles
+    :param shuttle_bus: The bus object which will move around the map grid
+    """
     bus_img = image.load(".\\Images\\Bus\\bus.png").convert()
     bus_img.set_colorkey((255, 255, 255))
 
