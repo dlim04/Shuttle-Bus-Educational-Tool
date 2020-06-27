@@ -1,4 +1,4 @@
-from common.TileType import TileType
+from common.TileType import TileType, string_to_tile_type
 from pygame import image
 
 
@@ -11,8 +11,16 @@ class Tile:
         """
         Constructor for the Tile class
         """
+        self.__is_road = determine_road(tile_type)
         self.__image = determine_image(tile_type)
         self.__angle = angle
+
+    def is_road(self):
+        """
+        Getter for if the tile is a road or not.
+        :return: Whether the tile is a type of road or not as a boolean
+        """
+        return self.__is_road
 
     def get_image(self):
         """
@@ -27,6 +35,13 @@ class Tile:
         :return: The angle for the image to be rotated by as an integer
         """
         return self.__angle
+
+
+def determine_road(tile_type):
+    if tile_type == TileType.STRAIGHT_ROAD or tile_type == TileType.CORNER_ROAD or tile_type == TileType.T_JUNCTION or tile_type == TileType.CROSSROADS:
+        return True
+    else:
+        return False
 
 
 def determine_image(tile_type):
@@ -53,9 +68,9 @@ def determine_image(tile_type):
     elif tile_type == TileType.CANDY_SHOP:
         return image.load(".\\Images\\Terrain\\candy_shop.png")
     elif tile_type == TileType.FOOTBALL_CLUB:
-        return image.load(".\\\Images\\Terrain\\football_club.png")
+        return image.load(".\\Images\\Terrain\\football_club.png")
     elif tile_type == TileType.BUS_STOP:
-        return image.load(".\\\Images\\Terrain\\bus_stop.png")
+        return image.load(".\\Images\\Terrain\\bus_stop.png")
 
 
 if __name__ == '__main__':
