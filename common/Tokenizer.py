@@ -8,6 +8,7 @@ def tokenizer(program):
     :param program: The program to be run as a string
     :return: A tokenized version of the program
     """
+    program += "\n"  # Add new line at the end of the file to save the line before if it's a string
     string = ""
     token_program = []
     current_line = []
