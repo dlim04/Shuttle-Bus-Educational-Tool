@@ -38,6 +38,11 @@ class Tile:
 
 
 def determine_road(tile_type):
+    """
+    Function to determine whether the tile is a road or not
+    :param tile_type: The name of the type of tile
+    :return: Boolean which is true when the tile is a road, otherwise it is false
+    """
     if tile_type == TileType.STRAIGHT_ROAD or tile_type == TileType.CORNER_ROAD or tile_type == TileType.T_JUNCTION or tile_type == TileType.CROSSROADS or tile_type == TileType.DEAD_END:
         return True
     else:
@@ -45,6 +50,11 @@ def determine_road(tile_type):
 
 
 def determine_image(tile_type):
+    """
+    Function to return the corresponding image of a tile based on its name
+    :param tile_type: The name of the type of tile
+    :return:
+    """
     if tile_type == TileType.STRAIGHT_ROAD:
         return image.load(".\\Images\\Roads\\straight.png")
     elif tile_type == TileType.CORNER_ROAD:
