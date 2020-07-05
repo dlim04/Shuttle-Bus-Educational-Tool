@@ -1,5 +1,6 @@
-from common.ShuttleBus import ShuttleBus
+from common.ShuttleBus import *
 from common.LoadFiles import load_map
+from common.TokenType import TokenType
 from pygame import *
 
 
@@ -21,7 +22,6 @@ def animation(program):
     """
     Function to animate the shuttle bus moving around the map grid
     :param program: The compiled program generated from what the user has written
-    :return:
     """
     code = program.get_code()
     clock = time.Clock()
@@ -48,25 +48,48 @@ def animation(program):
 
     # Loop to execute each command given to the shuttle bus in sequence
     for line in code:
-        draw_map(tile_map, screen, tile_size, shuttle_bus)
-        for rects in tile_rects:
-            if rects.colliderect(bus_rect):
-                no_collision = False
+        if line[0] == TokenType.SPECIAL_FORWARD or line[0] == TokenType.SPECIAL_REVERSE:
+            # Loop to animate the shuttle bus moving forwards or reversing while checking for collisions
+            for i in range(0, 16 * line[1]):
+                draw_map(tile_map, screen, tile_size, shuttle_bus)
+                for rects in tile_rects:
+                    if rects.colliderect(bus_rect):
+                        no_collision = False
+                        break
+
+                if no_collision:
+                    clock.tick(30)
+                    display.update()
+                    if line[0] == TokenType.SPECIAL_FORWARD:
+                        shuttle_bus.drive(2 / tile_size)
+                    else:
+                        shuttle_bus.drive(-2 / tile_size)
+                    bus_rect.x = shuttle_bus.get_x() * tile_size
+                    bus_rect.y = shuttle_bus.get_y() * tile_size
+                else:
+                    break
+
+            if not no_collision:
                 break
 
-        if no_collision:
-            clock.tick(2)
-            display.update()
-            print(shuttle_bus.move(line))
-            bus_rect.x = shuttle_bus.get_x() * tile_size
-            bus_rect.y = shuttle_bus.get_y() * tile_size
         else:
-            break
+            # Loop to animate the shuttle bus turning right or left (collisions cannot occur when turning)
+            for i in range(0, int(line[1] / 5)):
+                draw_map(tile_map, screen, tile_size, shuttle_bus)
+                clock.tick(30)
+                display.update()
+                if line[0] == TokenType.SPECIAL_LEFT:
+                    shuttle_bus.left(5)
+                else:
+                    shuttle_bus.right(5)
+
+        # Print the instruction completed to the console, provided the shuttle bus did not crash
+        print(move(line))
 
     # If statement to display the final frame of animation if no collision has been detected
     if no_collision:
         draw_map(tile_map, screen, tile_size, shuttle_bus)
-        clock.tick(2)
+        clock.tick(30)
         display.update()
         print("The shuttle bus has reached it's destination!")
     else:
@@ -92,8 +115,9 @@ def draw_map(tile_map, screen, tile_size, shuttle_bus):
             x += 1
         y += 1
 
-    screen.blit(transform.rotate(bus_img, shuttle_bus.get_angle()),
-                (shuttle_bus.get_x() * tile_size, shuttle_bus.get_y() * tile_size))
+    bus_img_rotated = transform.rotate(bus_img, shuttle_bus.get_angle())
+    screen.blit(bus_img_rotated,
+                (shuttle_bus.get_x() * tile_size + int(bus_img.get_width() / 2) - int(bus_img_rotated.get_width() / 2), shuttle_bus.get_y() * tile_size + int(bus_img.get_height() / 2) - int(bus_img_rotated.get_height() / 2)))
 
 
 if __name__ == '__main__':

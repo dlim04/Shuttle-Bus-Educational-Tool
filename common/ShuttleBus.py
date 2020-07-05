@@ -11,27 +11,13 @@ class ShuttleBus:
         """
         Constructor for the ShuttleBus class
         """
-        self.__x = 8
-        self.__y = 8
+        self.__x = 2
+        self.__y = 0
         self.__angle = 180
 
-    def move(self, instruction):
+    def drive(self, distance):
         """
-        Private helper method to translate the program to animation.
-        :param instruction: A list with a Special token at index 0 and an integer modifier at index 1
-        """
-        if instruction[0] == TokenType.SPECIAL_FORWARD:
-            return self.__drive(instruction[1])
-        elif instruction[0] == TokenType.SPECIAL_REVERSE:
-            return self.__drive(-instruction[1])
-        elif instruction[0] == TokenType.SPECIAL_LEFT:
-            return self.__left(instruction[1])
-        elif instruction[0] == TokenType.SPECIAL_RIGHT:
-            return self.__right(instruction[1])
-
-    def __drive(self, distance):
-        """
-        Private helper method to animate the shuttle bus moving.
+        Helper method to animate the shuttle bus moving.
         :param distance: The amount of tiles the shuttle bus moves as an integer
         """
         if self.__angle == 0:
@@ -43,31 +29,19 @@ class ShuttleBus:
         elif self.__angle == 270:
             self.__x += distance
 
-        # Animation goes here
-
-        return "The shuttle bus moved forward " + str(distance) + " space(s)"
-
-    def __left(self, angle):
+    def left(self, angle):
         """
-        Private helper method to animate the shuttle but turning left.
+        Helper method to animate the shuttle bus turning left.
         :param angle: The angle the bus turns left as an integer
         """
         self.__set_angle(angle)
 
-        # Animation goes here
-
-        return "The shuttle bus turned left " + str(angle) + " degrees"
-
-    def __right(self, angle):
+    def right(self, angle):
         """
-        Private helper method to animate the shuttle but turning right.
+        Helper method to animate the shuttle bus turning right.
         :param angle: The angle the bus turns right as an integer
         """
         self.__set_angle(-angle)
-
-        # Animation goes here
-
-        return "The shuttle bus turned right " + str(angle) + " degrees"
 
     def __set_angle(self, angle):
         """
@@ -84,23 +58,38 @@ class ShuttleBus:
     def get_x(self):
         """
         Getter for the x ordinate of the shuttle bus.
-        :return: The x ordinate of the function as a string
+        :return: The x ordinate of the function as an integer
         """
         return self.__x
 
     def get_y(self):
         """
         Getter for the y ordinate of the shuttle bus.
-        :return: The y ordinate of the function as a string
+        :return: The y ordinate of the function as an integer
         """
         return self.__y
 
     def get_angle(self):
         """
         Getter for the angle of the shuttle bus.
-        :return: The angle of the function as a string
+        :return: The angle of the function as an integer
         """
         return self.__angle
+
+
+def move(instruction):
+    """
+    Function to display text describing what instruction the shuttle bus has carried out
+    :param instruction: A list with a Special token at index 0 and an integer modifier at index 1
+    """
+    if instruction[0] == TokenType.SPECIAL_FORWARD:
+        return "The shuttle bus moved forward " + str(instruction[1]) + " space(s)"
+    elif instruction[0] == TokenType.SPECIAL_REVERSE:
+        return "The shuttle bus reversed " + str(instruction[1]) + " space(s)"
+    elif instruction[0] == TokenType.SPECIAL_LEFT:
+        return "The shuttle bus turned left " + str(instruction[1]) + " degrees"
+    elif instruction[0] == TokenType.SPECIAL_RIGHT:
+        return "The shuttle bus turned right " + str(instruction[1]) + " degrees"
 
 
 if __name__ == '__main__':
