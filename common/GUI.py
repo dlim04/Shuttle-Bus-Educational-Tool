@@ -49,7 +49,6 @@ def animation(program):
 
     # Loop to execute each command given to the shuttle bus in sequence
     for line in code:
-        allow_exit()
         if line[0] == TokenType.SPECIAL_FORWARD or line[0] == TokenType.SPECIAL_REVERSE:
             # Loop to animate the shuttle bus moving forwards or reversing while checking for collisions
             for i in range(0, 16 * line[1]):
