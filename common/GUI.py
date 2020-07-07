@@ -30,20 +30,9 @@ def animation(program):
     window_size = (480, 480)
     screen = display.set_mode(window_size, 0, 32)
     tile_size = 32
-    tile_map = load_map()
+    tile_map, tile_rects = load_map(tile_size)
     shuttle_bus = ShuttleBus()
     bus_rect = Rect(shuttle_bus.get_x() * tile_size, shuttle_bus.get_y() * tile_size, tile_size, tile_size)
-    tile_rects = []
-
-    # Loop to add a Rect to all tiles which are not a type of road
-    y = 0
-    for row in tile_map:
-        x = 0
-        for tile in row:
-            if not tile.is_road():
-                tile_rects.append(Rect(x * tile_size, y * tile_size, tile_size, tile_size))
-            x += 1
-        y += 1
 
     draw_map(clock, tile_map, screen, tile_size, shuttle_bus)
 
@@ -94,7 +83,7 @@ def draw_map(clock, tile_map, screen, tile_size, shuttle_bus):
     """
     Function to draw the map on to the screen
     :param clock: The internal clock the game runs on
-    :param tile_map: The list of all tiles to be drawn on to the screen
+    :param tile_map: The nested list of all tiles to be drawn on to the screen
     :param screen: The screen object which will e displayed
     :param tile_size: The height and width in pixels of the tiles
     :param shuttle_bus: The bus object which will move around the map grid
@@ -121,7 +110,7 @@ def draw_map(clock, tile_map, screen, tile_size, shuttle_bus):
 def collision_check(tile_rects, bus_rect):
     """
     Function to check for bus collisions
-    :param tile_rects: The list of all tile rects on the map
+    :param tile_rects: The nested list of all tile rects on the map
     :param bus_rect: The rect of the shuttle bus
     :return: Whether there is a collision or not as a boolean value
     """
