@@ -133,6 +133,9 @@ def collision_check(tile_rects, bus_rect):
 
 
 def allow_exit():
+    """
+    Function to allow exiting the pygame window and closing the program
+    """
     for events in event.get():
         if events.type == QUIT:
             display.quit()
