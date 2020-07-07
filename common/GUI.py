@@ -25,7 +25,7 @@ def animation(program):
     """
     code = program.get_code()
     clock = time.Clock()
-    init()
+    display.init()
     display.set_caption("Shuttle Bus Educational Tool")
     window_size = (480, 480)
     screen = display.set_mode(window_size, 0, 32)
@@ -49,9 +49,11 @@ def animation(program):
 
     # Loop to execute each command given to the shuttle bus in sequence
     for line in code:
+        allow_exit()
         if line[0] == TokenType.SPECIAL_FORWARD or line[0] == TokenType.SPECIAL_REVERSE:
             # Loop to animate the shuttle bus moving forwards or reversing while checking for collisions
             for i in range(0, 16 * line[1]):
+                allow_exit()
                 if not collision_check(tile_rects, bus_rect):
                     if line[0] == TokenType.SPECIAL_FORWARD:
                         shuttle_bus.drive(2 / tile_size)
@@ -69,6 +71,7 @@ def animation(program):
         else:
             # Loop to animate the shuttle bus turning right or left (collisions cannot occur when turning)
             for i in range(0, int(line[1] / 5)):
+                allow_exit()
                 if line[0] == TokenType.SPECIAL_LEFT:
                     shuttle_bus.left(5)
                 else:
@@ -83,6 +86,9 @@ def animation(program):
         print("The shuttle bus has reached it's destination!")
     else:
         print("Shuttle bus crashed!")
+
+    while True:
+        allow_exit()
 
 
 def draw_map(clock, tile_map, screen, tile_size, shuttle_bus):
@@ -124,6 +130,13 @@ def collision_check(tile_rects, bus_rect):
         if rects.colliderect(bus_rect):
             return True
     return False
+
+
+def allow_exit():
+    for events in event.get():
+        if events.type == QUIT:
+            display.quit()
+            exit()
 
 
 if __name__ == '__main__':
