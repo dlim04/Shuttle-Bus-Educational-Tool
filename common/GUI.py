@@ -34,7 +34,6 @@ def animation(program):
     shuttle_bus = ShuttleBus()
     bus_rect = Rect(shuttle_bus.get_x() * tile_size, shuttle_bus.get_y() * tile_size, tile_size, tile_size)
     tile_rects = []
-    no_collision = True
 
     # Loop to add a Rect to all tiles which are not a type of road
     y = 0
@@ -46,59 +45,50 @@ def animation(program):
             x += 1
         y += 1
 
+    draw_map(clock, tile_map, screen, tile_size, shuttle_bus)
+
     # Loop to execute each command given to the shuttle bus in sequence
     for line in code:
         if line[0] == TokenType.SPECIAL_FORWARD or line[0] == TokenType.SPECIAL_REVERSE:
             # Loop to animate the shuttle bus moving forwards or reversing while checking for collisions
             for i in range(0, 16 * line[1]):
-                draw_map(tile_map, screen, tile_size, shuttle_bus)
-                for rects in tile_rects:
-                    if rects.colliderect(bus_rect):
-                        no_collision = False
-                        break
-
-                if no_collision:
-                    clock.tick(30)
-                    display.update()
+                if not collision_check(tile_rects, bus_rect):
                     if line[0] == TokenType.SPECIAL_FORWARD:
                         shuttle_bus.drive(2 / tile_size)
                     else:
                         shuttle_bus.drive(-2 / tile_size)
                     bus_rect.x = shuttle_bus.get_x() * tile_size
                     bus_rect.y = shuttle_bus.get_y() * tile_size
+                    draw_map(clock, tile_map, screen, tile_size, shuttle_bus)
                 else:
                     break
 
-            if not no_collision:
+            if collision_check(tile_rects, bus_rect):
                 break
 
         else:
             # Loop to animate the shuttle bus turning right or left (collisions cannot occur when turning)
             for i in range(0, int(line[1] / 5)):
-                draw_map(tile_map, screen, tile_size, shuttle_bus)
-                clock.tick(30)
-                display.update()
                 if line[0] == TokenType.SPECIAL_LEFT:
                     shuttle_bus.left(5)
                 else:
                     shuttle_bus.right(5)
+                draw_map(clock, tile_map, screen, tile_size, shuttle_bus)
 
         # Print the instruction completed to the console, provided the shuttle bus did not crash
         print(move(line))
 
-    # If statement to display the final frame of animation if no collision has been detected
-    if no_collision:
-        draw_map(tile_map, screen, tile_size, shuttle_bus)
-        clock.tick(30)
-        display.update()
+    # If statement to print a line of text to at the end of the bus journey
+    if not collision_check(tile_rects, bus_rect):
         print("The shuttle bus has reached it's destination!")
     else:
         print("Shuttle bus crashed!")
 
 
-def draw_map(tile_map, screen, tile_size, shuttle_bus):
+def draw_map(clock, tile_map, screen, tile_size, shuttle_bus):
     """
     Function to draw the map on to the screen
+    :param clock: The internal clock the game runs on
     :param tile_map: The list of all tiles to be drawn on to the screen
     :param screen: The screen object which will e displayed
     :param tile_size: The height and width in pixels of the tiles
@@ -117,7 +107,23 @@ def draw_map(tile_map, screen, tile_size, shuttle_bus):
 
     bus_img_rotated = transform.rotate(bus_img, shuttle_bus.get_angle())
     screen.blit(bus_img_rotated,
-                (shuttle_bus.get_x() * tile_size + int(bus_img.get_width() / 2) - int(bus_img_rotated.get_width() / 2), shuttle_bus.get_y() * tile_size + int(bus_img.get_height() / 2) - int(bus_img_rotated.get_height() / 2)))
+                (shuttle_bus.get_x() * tile_size + int(bus_img.get_width() / 2) - int(bus_img_rotated.get_width() / 2),
+                 shuttle_bus.get_y() * tile_size + int(bus_img.get_height() / 2) - int(bus_img_rotated.get_height() / 2)))
+    clock.tick(30)
+    display.update()
+
+
+def collision_check(tile_rects, bus_rect):
+    """
+    Function to check for bus collisions
+    :param tile_rects: The list of all tile rects on the map
+    :param bus_rect: The rect of the shuttle bus
+    :return: Whether there is a collision or not as a boolean value
+    """
+    for rects in tile_rects:
+        if rects.colliderect(bus_rect):
+            return True
+    return False
 
 
 if __name__ == '__main__':

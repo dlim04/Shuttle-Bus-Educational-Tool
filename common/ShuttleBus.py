@@ -11,8 +11,8 @@ class ShuttleBus:
         """
         Constructor for the ShuttleBus class
         """
-        self.__x = 2
-        self.__y = 0
+        self.__x = 8
+        self.__y = 8
         self.__angle = 180
 
     def drive(self, distance):
